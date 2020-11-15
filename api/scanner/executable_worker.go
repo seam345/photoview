@@ -32,6 +32,7 @@ type FfmpegWorker struct {
 
 func newDarktableWorker() *DarktableWorker {
 	path, err := exec.LookPath("darktable-cli")
+	log.Println("started darktable ")
 	if err != nil {
 		log.Println("Executable worker not found: darktable")
 	} else {

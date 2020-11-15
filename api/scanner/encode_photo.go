@@ -125,9 +125,11 @@ func (img *EncodeMediaData) EncodeHighRes(tx *sql.Tx, outputPath string) error {
 	if !contentType.isSupported() {
 		return errors.New("could not convert photo as file format is not supported")
 	}
-
+	log.Println("encoding high res")
 	if contentType.isRaw() {
+	log.Println("si raw")
 		if DarktableCli.IsInstalled() {
+	log.Println("encoud")
 			err := DarktableCli.EncodeJpeg(img.media.Path, outputPath, 70)
 			if err != nil {
 				return err

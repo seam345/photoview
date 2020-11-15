@@ -101,6 +101,7 @@ func processPhoto(tx *sql.Tx, imageData *EncodeMediaData, photoCachePath *string
 	var baseImagePath string = photo.Path
 
 	if highResURL == nil {
+		log.Println("Creating high res photo")
 
 		contentType, err := imageData.ContentType()
 		if err != nil {
@@ -138,6 +139,7 @@ func processPhoto(tx *sql.Tx, imageData *EncodeMediaData, photoCachePath *string
 			}
 		}
 	} else {
+		log.Println("high res photo exists")
 		// Verify that highres photo still exists in cache
 		baseImagePath = path.Join(*photoCachePath, highResURL.MediaName)
 

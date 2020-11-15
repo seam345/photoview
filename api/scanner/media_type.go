@@ -179,6 +179,9 @@ var fileExtensions = map[string]MediaType{
 }
 
 func (imgType *MediaType) isRaw() bool {
+	log.Println("cecking raw types")
+	log.Println("type is")
+	log.Println(*imgType)
 	for _, raw_mime := range RawMimeTypes {
 		if raw_mime == *imgType {
 			return true
@@ -215,7 +218,10 @@ func (imgType *MediaType) isSupported() bool {
 			return true
 		}
 	}
-
+	log.Println("testing image")
+	if imgType.isRaw() {
+		log.Println("image is raw")
+	}
 	if DarktableCli.IsInstalled() && imgType.isRaw() {
 		return true
 	}
